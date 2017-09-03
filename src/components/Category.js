@@ -2,6 +2,9 @@ import React from 'react';
 import { withRouter } from 'react-router-dom'
 
 function Category(props) {
+  const { category } = props;
+  const formattedCategory = category.name.charAt(0).toUpperCase() + category.name.slice(1);
+
   function categoryClicked() {
     props.history.push(`/${props.category.path}`)
   }
@@ -9,7 +12,7 @@ function Category(props) {
   return (
     <div onClick={categoryClicked} className="card" id='card_id'>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item clickables">{props.category.name}</li>
+        <li className="list-group-item clickables">{formattedCategory}</li>
       </ul>
     </div>
   );
