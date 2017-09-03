@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Vote from './Vote';
 
@@ -11,7 +12,7 @@ export default function Post(props) {
         <h4 className="card-title">{post.title}</h4>
         <p className="card-text">{post.body}</p>
 
-        <a href="/comments" className="card-text">comment({`${post.comments ? post.comments.length : 0 }`})</a>
+        <Link to={`/posts/${post.id}`} className="card-text">comment({`${post.comments ? post.comments.length : 0 }`})</Link>
         <Vote post={post}/>
         <br />
         
