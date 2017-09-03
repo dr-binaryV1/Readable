@@ -9,7 +9,7 @@ function Category(props) {
   return (
     <div onClick={categoryClicked} className="card" id='card_id'>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item">{props.category.name}</li>
+        <li className="list-group-item clickables">{props.category.name}</li>
       </ul>
     </div>
   );

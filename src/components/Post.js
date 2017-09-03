@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Vote from './Vote';
+
 export default function Post(props) {
   const {post} = props;
 
@@ -10,6 +12,7 @@ export default function Post(props) {
         <p className="card-text">{post.body}</p>
 
         <a href="/comments" className="card-text">comment({`${post.comments ? post.comments.length : 0 }`})</a>
+        <Vote post={post}/>
         <br />
         
         <hr />
