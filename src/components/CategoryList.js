@@ -20,7 +20,7 @@ function CategoryList(props) {
 
 function mapStateToProps(state) {
   return {
-    categories: state.postData.categories
+    categories: state.categoryData.categories
   }
 }
 
