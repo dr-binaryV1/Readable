@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import PostsList from './PostsList';
 import Header from './Header';
 import * as actions from '../actions';
 import '../App.css';
@@ -15,6 +16,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <PostsList />
       </div>
     );
   }
