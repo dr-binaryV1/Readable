@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import Comment from './Comment';
 import Vote from './Vote';
 
-
 class PostDetail extends Component {
-
   render() {
     const { posts, postId } = this.props;
 
@@ -31,13 +29,23 @@ class PostDetail extends Component {
               </div>
               <br />
               <h4>Comments</h4>
-              {post.comments.map(comment => {
+              {post.comments ? post.comments.map(comment => {
                 return <Comment key={comment.id} comment={comment}/>
-              })}
+              }) 
+              : <h6>No Comments at this time.</h6>}
             </div>
           )
         }) 
         : ''}
+
+        <div className="card border-light mb-3 text-left">
+          <div className="card-header">Add Comment</div>
+          <div className="card-body">
+            <textarea className="form-control" rows="3" placeholder="Add comment here..."></textarea>
+            <br />
+            <button className="btn btn-primary">Post Comment</button>
+          </div>
+        </div>
       </div>
     )
   }
