@@ -20,14 +20,14 @@ class App extends Component {
         <Header />
         <div className="container">
           <div className="row">
-            <div className="col-8">
+            <div className="col-10">
               <Route exact path="/" component={PostsList} />
               <Route exact path="/:category" render={({ match }) => {
                 const { category } = match.params;
                 return <PostsList category={category} />
               }} />
             </div>
-            <div className="col-4"><CategoryList /></div>
+            <div className="col-2"><CategoryList /></div>
           </div>
         </div>
       </div>

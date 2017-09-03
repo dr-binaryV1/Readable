@@ -1,4 +1,4 @@
-import { RECIEVE_CATEGORIES } from '../actions';
+import { RECEIVE_CATEGORIES } from '../actions';
 
 export default function(state={}, action) {
   const { data } = action;
@@ -6,7 +6,7 @@ export default function(state={}, action) {
   data ? categories = data.categories : categories = undefined;
 
   switch(action.type) {
-    case RECIEVE_CATEGORIES:
+    case RECEIVE_CATEGORIES:
       return {...state, categories};
 
     default:

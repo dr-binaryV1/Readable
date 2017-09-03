@@ -1,6 +1,13 @@
 const apiURL = 'http://localhost:5001';
+const headers = {
+  headers: {
+    Authorization: 'gcvhbf84up5juhbde'
+  }
+}
+
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
-export const RECIEVE_CATEGORIES = 'RECEIVE_CATEGORIES';
+export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 
 
 export const receivePosts = posts => ({
@@ -9,22 +16,27 @@ export const receivePosts = posts => ({
 });
 
 export const receiveCategories = data => ({
-  type: RECIEVE_CATEGORIES,
+  type: RECEIVE_CATEGORIES,
   data
 });
 
+export const receiveComments = comments => ({
+  type: RECEIVE_COMMENTS,
+  comments
+});
+
 export const getPosts = () => dispatch => {
-  fetch(`${apiURL}/posts`, {
-    headers: {
-      Authorization: 'gcvhbf84up5juhbde'
-    }
-  }).then(response => response.json()).then((posts) => dispatch(receivePosts(posts)));
+  fetch(`${apiURL}/posts`, headers)
+    .then(response => response.json()).then((posts) => {
+      dispatch(receivePosts(posts))
+    });
 };
 
 export const getCategories = () => dispatch => {
-  fetch(`${apiURL}/categories`, {
-    headers: {
-      Authorization: 'gcvhbf84up5juhbde'
-    }
-  }).then(response => response.json()).then((data) => dispatch(receiveCategories(data)));
+  fetch(`${apiURL}/categories`, headers)
+    .then(response => response.json()).then((data) => dispatch(receiveCategories(data)));
 };
+
+export const getComments = (posts) => {
+  // TODO: Figure out how to get all comments
+}

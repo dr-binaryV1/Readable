@@ -1,6 +1,5 @@
 import {
-  RECEIVE_POSTS,
-  RECIEVE_CATEGORIES
+  RECEIVE_POSTS
 } from '../actions';
 
 export default function posts(state={}, action) {
