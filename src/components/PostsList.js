@@ -3,16 +3,21 @@ import { connect } from 'react-redux';
 
 import Post from './Post';
 
-class PostsList extends Component {
-  render() {
-    const { posts } = this.props;
+function PostsList(props) {
+  const { posts, category } = props;
 
-    return (
+  return (
+    <div>
       <div>
-        {posts ? posts.map((post) => <Post post={post} />) : ''}
+        <h3>Posts</h3>
+        <hr />
+        {posts && category ? posts.filter(post => 
+          {return post.category === category}).map((post) => 
+            <Post key={post.id} post={post} />) : posts ? posts.map((post) => 
+              <Post key={post.id} post={post} />) : ''}
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 function mapStateToProps(state) {
