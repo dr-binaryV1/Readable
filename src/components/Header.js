@@ -6,10 +6,10 @@ export default function Header() {
     <a className="navbar-brand" href="/">Readable</a>
       <ul className="navbar-nav">
         <li className="nav-item active">
-          <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+          <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Add Post</a>
+          <a className="nav-link" href="create">Add Post</a>
         </li>
       </ul>
     </nav>
