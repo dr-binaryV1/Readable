@@ -28,7 +28,13 @@ export const receiveComments = comments => ({
 export const getPosts = () => dispatch => {
   fetch(`${apiURL}/posts`, headers)
     .then(response => response.json()).then((posts) => {
-      dispatch(receivePosts(posts))
+      posts.map((post) => {
+        return fetch(`${apiURL}/posts/${post.id}/comments`, headers)
+          .then((res) => res.json())
+          .then(comments => {
+            post.comments = comments;
+          }).then(() => dispatch(receivePosts(posts)))
+      })
     });
 };
 
@@ -38,5 +44,5 @@ export const getCategories = () => dispatch => {
 };
 
 export const getComments = (posts) => {
-  // TODO: Figure out how to get all comments
+  // TODO: figure this out
 }
