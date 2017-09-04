@@ -79,8 +79,8 @@ export const postComment = (comment) => dispatch => {
     .then(getPosts()(dispatch));
 }
 
-export const deletePost = (id) => dispatch => {
-  fetch(`${apiURL}/posts/${id}`, {
+export const deleteContent = (id, path) => dispatch => {
+  fetch(`${apiURL}/${path}/${id}`, {
     headers: {
       Authorization: 'gcvhbf84up5juhbde'
     },

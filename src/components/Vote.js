@@ -14,7 +14,7 @@ class Vote extends Component {
     const { post } = this.props;
 
     return (
-      <div className='card col-2 text-center float-md-right text-dark'>
+      <div className='card col-8 text-center float-md-right text-dark'>
         <div>
           <div className='clickables' onClick={() => this.onVote('upVote')}><FaArrowUp /></div>
         </div>
