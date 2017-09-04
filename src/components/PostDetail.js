@@ -1,9 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import uuid from 'uuid';
+
+import * as actions from '../actions';
 import Comment from './Comment';
 import Vote from './Vote';
 
 class PostDetail extends Component {
+  onSubmitComment() {
+    const { postId } = this.props;
+    const body = document.getElementById('comment').value;
+    const author = document.getElementById('author').value;
+    const id = uuid();
+    const timestamp = new Date().getTime();
+
+    const data = {
+      id,
+      timestamp,
+      body,
+      author,
+      parentId: postId
+    };
+
+    this.props.postComment(data);
+  }
+
   render() {
     const { posts, postId } = this.props;
 
@@ -17,7 +38,7 @@ class PostDetail extends Component {
                   <h4 className="card-title">{post.title}</h4>
                   <p className="card-text">{post.body}</p>
 
-                  <Vote post={post}/>
+                  <Vote post={post} path="posts"/>
                   <br />
                   
                   <hr />
@@ -41,9 +62,26 @@ class PostDetail extends Component {
         <div className="card border-light mb-3 text-left">
           <div className="card-header">Add Comment</div>
           <div className="card-body">
-            <textarea className="form-control" rows="3" placeholder="Add comment here..."></textarea>
-            <br />
-            <button className="btn btn-primary">Post Comment</button>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <input
+                name="author"
+                id="author"
+                className="form-control col-4"
+                type="text"
+                placeholder="Enter author name"
+                required />
+              <br />
+              <textarea
+                name="comment"
+                id="comment"
+                className="form-control col-8" 
+                rows="3" 
+                placeholder="Add comment here..." />
+              <br />
+              <button 
+                onClick={this.onSubmitComment.bind(this)}
+                className="btn btn-primary">Post Comment</button>
+            </form>
           </div>
         </div>
       </div>
@@ -57,4 +95,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(PostDetail);
+export default connect(mapStateToProps, actions)(PostDetail);
