@@ -51,7 +51,11 @@ class PostDetail extends Component {
                     </div>
                   </div>
                   <hr />
-                  <p className="card-text author"><MdAccountCircle size={30}/> {post.author} | <MdDateRange size={25} /> {new Date(post.timestamp).toDateString()}</p>
+                  <p className="card-text author">
+                    <MdAccountCircle size={30}/>
+                    {post.author} | <MdDateRange size={25} />
+                    {new Date(post.timestamp).toDateString()}
+                  </p>
                   <div className="post-buttons float-md-right">
                     <button
                         onClick={() => { document.getElementById(post.id).style.display = "block" }}
