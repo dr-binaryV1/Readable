@@ -6,7 +6,7 @@ function Header() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <Link className="navbar-brand" to="/">Readable</Link>
       <ul className="navbar-nav">
-        <li className="nav-item active">
+        <li className="nav-item">
           <Link className="nav-link" to="/">Home<span className="sr-only">(current)</span></Link>
         </li>
         <li className="nav-item">
