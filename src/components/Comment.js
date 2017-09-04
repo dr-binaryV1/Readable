@@ -7,7 +7,7 @@ export default function Comment(props) {
   const date = new Date().toDateString(comment.timestamp);
 
   return (
-    <div className="card mb-3">
+    <div className="card">
       <div className="card-body text-white bg-primary">
         <div className="row">
           <div className="col-6">
