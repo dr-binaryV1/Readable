@@ -6,6 +6,7 @@ import PostsList from './PostsList';
 import CategoryList from './CategoryList';
 import PostDetail from './PostDetail';
 import Header from './Header';
+import AddPost from './AddPost';
 import * as actions from '../actions';
 import '../App.css';
 
@@ -32,6 +33,7 @@ class App extends Component {
                 const { id } = match.params;
                 return <PostDetail postId={id} />
               }} />
+              <Route exact path="/add-post" component={AddPost} />
             </div>
             <div className="col-2"><CategoryList /></div>
           </div>
