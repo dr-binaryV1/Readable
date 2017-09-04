@@ -7,15 +7,17 @@ export default function Post(props) {
   const {post} = props;
 
   return (
-    <div className="card text-left">
+    <div className="card text-left text-white bg-dark">
       <div className="card-body">
         <h4 className="card-title">{post.title}</h4>
         <p className="card-text">{post.body}</p>
-
-        <Link to={`/posts/${post.category}/${post.id}`} className="card-text">comment({`${post.comments ? post.comments.length : 0 }`})</Link>
-        <Vote post={post}/>
+        <Link 
+          to={`/${post.category}/${post.id}`} 
+          className="card-text">
+            comment({`${post.comments ? post.comments.length : 0 }`})
+        </Link>
+        <Vote post={post} path="posts"/>
         <br />
-        
         <hr />
         <i><p className="card-text">Author: {post.author}</p></i>
         
