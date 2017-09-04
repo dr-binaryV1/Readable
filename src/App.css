@@ -31,6 +31,15 @@ button {
   bottom: 2%;
 }
 
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.categories:hover {
+  background-color: #343a40 !important;
+}
+
 .card-margin-bottom {
   margin-bottom: 10px;
 }
