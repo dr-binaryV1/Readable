@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import MdComment from 'react-icons/lib/md/comment';
+import MdAccountCircle from 'react-icons/lib/md/account-circle';
+import MdDateRange from 'react-icons/lib/md/date-range';
+import MdCreate from 'react-icons/lib/md/create';
+import MdDelete from 'react-icons/lib/md/delete';
 import * as actions from '../actions';
 import EditPost from './EditPost';
 
@@ -26,7 +31,7 @@ class Post extends Component {
                   <Link 
                     to={`/${post.category}/${post.id}`} 
                     className="card-text">
-                      comments ({`${post.comments ? post.comments.length : 0 }`})
+                      <MdComment size={30} /> Comments ({`${post.comments ? post.comments.length : 0 }`})
                   </Link>
               </div>
               <div className="col-2">
@@ -34,13 +39,12 @@ class Post extends Component {
               </div>
             </div>
             <hr />
-            <p className="card-text author">Author: {post.author} | Date Posted: {date}</p>
-            
+            <p className="card-text author"><MdAccountCircle size={25}/> {post.author} | <MdDateRange size={25} /> {date}</p>
             <div className="post-buttons float-md-right">
               <button 
                 onClick={() => { document.getElementById(post.id).style.display = "block" }} 
-                className="btn btn-primary">Edit</button>
-              <button onClick={this.onDeleteClicked.bind(this)} className="btn btn-danger">Delete</button>
+                className="btn btn-primary"><MdCreate /> Edit</button>
+              <button onClick={this.onDeleteClicked.bind(this)} className="btn btn-danger"><MdDelete /> Delete</button>
             </div>
           </div>
         </div>

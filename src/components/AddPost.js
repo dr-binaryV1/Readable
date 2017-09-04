@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
+import MdCreate from 'react-icons/lib/md/create';
 import uuid from 'uuid';
 
 import * as actions from '../actions';
@@ -71,7 +72,7 @@ class AddPost extends Component {
               <button
                 onClick={this.onSubmitPost.bind(this)}
                 className="btn btn-primary float-md-left">
-                Submit Post
+                <MdCreate /> Submit Post
               </button>
             </form>
           </div>

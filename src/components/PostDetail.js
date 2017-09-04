@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import uuid from 'uuid';
+import MdAccountCircle from 'react-icons/lib/md/account-circle';
+import MdDateRange from 'react-icons/lib/md/date-range';
+import MdCreate from 'react-icons/lib/md/create';
+import MdDelete from 'react-icons/lib/md/delete';
 
 import * as actions from '../actions';
 import EditPost from './EditPost';
@@ -47,19 +51,19 @@ class PostDetail extends Component {
                     </div>
                   </div>
                   <hr />
-                  <p className="card-text author">Author: {post.author} | Date Posted: {new Date().toDateString(post.timestamp)}</p>
+                  <p className="card-text author"><MdAccountCircle size={30}/> {post.author} | <MdDateRange size={25} /> {new Date().toDateString(post.timestamp)}</p>
                   <div className="post-buttons float-md-right">
                     <button 
                         onClick={() => { document.getElementById(post.id).style.display = "block" }} 
                       className="btn btn-primary">
-                      Edit
+                      <MdCreate /> Edit
                     </button>
                     <button 
                       onClick={() => {
                         this.props.deleteContent(post.id, 'posts');
                         history.push('/'); 
                       }} 
-                      className="btn btn-danger">Delete</button>
+                      className="btn btn-danger"><MdDelete /> Delete</button>
                   </div>
                 </div>
               </div>
@@ -98,7 +102,7 @@ class PostDetail extends Component {
               <br />
               <button 
                 onClick={this.onSubmitComment.bind(this)}
-                className="btn btn-primary">Post Comment</button>
+                className="btn btn-primary"><MdCreate /> Post Comment</button>
             </form>
           </div>
         </div>

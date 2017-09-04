@@ -2,6 +2,9 @@ import React from 'react';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
 
+import MdCreate from 'react-icons/lib/md/create';
+import MdCancel from 'react-icons/lib/md/cancel';
+
 function EditPost(props) {
     function onUpdatePost() {
       const title = document.getElementById(`title-${post.id}`).value;
@@ -41,10 +44,10 @@ function EditPost(props) {
                 
                 <button 
                   onClick={() => onUpdatePost()}
-                  className="btn btn-primary">Update Post</button>
+                  className="btn btn-primary"><MdCreate /> Update Post</button>
                 <button
                   onClick={() => document.getElementById(post.id).style.display="none"} 
-                  className="btn btn-danger">Cancel</button>
+                  className="btn btn-danger"><MdCancel /> Cancel</button>
               </form>
             </div>
         </div>

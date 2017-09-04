@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import MdAccountCircle from 'react-icons/lib/md/account-circle';
+import MdCreate from 'react-icons/lib/md/create';
+import MdDelete from 'react-icons/lib/md/delete';
+import MdDateRange from 'react-icons/lib/md/date-range';
 
 import * as actions from '../actions';
 
@@ -27,10 +31,10 @@ class Comment extends Component {
           </div>
         </div>
         <div className="card-footer text-white bg-dark">
-          Author: {comment.author} | Date Posted: {date}
+        <MdAccountCircle size={30}/> {comment.author} | <MdDateRange size={25} /> {date}
           <div className="float-md-right">
-            <button className="btn btn-primary">Edit</button>
-            <button onClick={this.onDeleteClicked.bind(this)} className="btn btn-danger">Delete</button>
+            <button className="btn btn-primary"><MdCreate /> Edit</button>
+            <button onClick={this.onDeleteClicked.bind(this)} className="btn btn-danger"><MdDelete /> Delete</button>
           </div>
         </div>
       </div>
