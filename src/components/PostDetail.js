@@ -51,18 +51,18 @@ class PostDetail extends Component {
                     </div>
                   </div>
                   <hr />
-                  <p className="card-text author"><MdAccountCircle size={30}/> {post.author} | <MdDateRange size={25} /> {new Date().toDateString(post.timestamp)}</p>
+                  <p className="card-text author"><MdAccountCircle size={30}/> {post.author} | <MdDateRange size={25} /> {new Date(post.timestamp).toDateString()}</p>
                   <div className="post-buttons float-md-right">
-                    <button 
-                        onClick={() => { document.getElementById(post.id).style.display = "block" }} 
+                    <button
+                        onClick={() => { document.getElementById(post.id).style.display = "block" }}
                       className="btn btn-primary">
                       <MdCreate /> Edit
                     </button>
-                    <button 
+                    <button
                       onClick={() => {
                         this.props.deleteContent(post.id, 'posts');
-                        history.push('/'); 
-                      }} 
+                        history.push('/');
+                      }}
                       className="btn btn-danger"><MdDelete /> Delete</button>
                   </div>
                 </div>
@@ -74,11 +74,11 @@ class PostDetail extends Component {
               <h4>Comments</h4>
               {post.comments ? post.comments.map(comment => {
                 return <Comment key={comment.id} comment={comment}/>
-              }) 
+              })
               : <h6>No Comments at this time.</h6>}
             </div>
           )
-        }) 
+        })
         : ''}
 
         <div className="card border-light mb-3 text-left">
@@ -96,11 +96,11 @@ class PostDetail extends Component {
               <textarea
                 name="comment"
                 id="comment"
-                className="form-control col-8" 
-                rows="3" 
+                className="form-control col-8"
+                rows="3"
                 placeholder="Add comment here..." />
               <br />
-              <button 
+              <button
                 onClick={this.onSubmitComment.bind(this)}
                 className="btn btn-primary"><MdCreate /> Post Comment</button>
             </form>
