@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import uuid from 'uuid';
 
 import * as actions from '../actions';
+import EditPost from './EditPost';
 import Comment from './Comment';
 import Vote from './Vote';
 
@@ -48,7 +49,11 @@ class PostDetail extends Component {
                   <hr />
                   <p className="card-text author">Author: {post.author} | Date Posted: {new Date().toDateString(post.timestamp)}</p>
                   <div className="post-buttons float-md-right">
-                    <button onClick={() => history.push('/edit')} className="btn btn-primary">Edit</button>
+                    <button 
+                        onClick={() => { document.getElementById(post.id).style.display = "block" }} 
+                      className="btn btn-primary">
+                      Edit
+                    </button>
                     <button 
                       onClick={() => {
                         this.props.deleteContent(post.id, 'posts');
@@ -57,6 +62,9 @@ class PostDetail extends Component {
                       className="btn btn-danger">Delete</button>
                   </div>
                 </div>
+              </div>
+              <div id={post.id} className="edit-post-container">
+                <EditPost post={ post } />
               </div>
               <br />
               <h4>Comments</h4>
