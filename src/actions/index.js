@@ -54,3 +54,37 @@ export const postVote = (id, option, path) => dispatch => {
   }).then((res) => res.json())
     .then(getPosts()(dispatch));
 }
+
+export const submitPost = (post) => dispatch => {
+  fetch(`${apiURL}/posts`, {
+    headers: {
+      Authorization: 'gcvhbf84up5juhbde',
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(post)
+  }).then((res) => res.json())
+    .then(getPosts()(dispatch));
+}
+
+export const postComment = (comment) => dispatch => {
+  fetch(`${apiURL}/comments`, {
+    headers: {
+      Authorization: 'gcvhbf84up5juhbde',
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(comment)
+  }).then((res) => res.json())
+    .then(getPosts()(dispatch));
+}
+
+export const deletePost = (id) => dispatch => {
+  fetch(`${apiURL}/posts/${id}`, {
+    headers: {
+      Authorization: 'gcvhbf84up5juhbde'
+    },
+    method: 'DELETE'
+  }).then((res) => res.json())
+    .then(getPosts()(dispatch));
+}
