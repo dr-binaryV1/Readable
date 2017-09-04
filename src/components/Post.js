@@ -7,33 +7,39 @@ import Vote from './Vote';
 
 class Post extends Component {
   onDeleteClicked() {
-    this.props.deletePost(this.props.post.id);
+    this.props.deleteContent(this.props.post.id, 'posts');
   }
 
   render() {
-    const {post} = this.props;
+    const {post, history} = this.props;
+    const date = new Date().toDateString(post.timestamp);
 
     return (
-      <div className="card text-left text-white bg-dark">
+      <div className="post-cards card text-left text-white bg-dark card-margin-bottom">
         <div className="card-body">
           <h4 className="card-title">{post.title}</h4>
-          <p className="card-text">{post.body}</p>
-          <Link 
-            to={`/${post.category}/${post.id}`} 
-            className="card-text">
-              comments ({`${post.comments ? post.comments.length : 0 }`})
-          </Link>
-          <Vote post={post} path="posts"/>
-          <br />
+          <div className="row">
+            <div className="col-10">
+              <p className="card-text">
+              <p className="card-text">{post.body}</p>
+                <Link 
+                  to={`/${post.category}/${post.id}`} 
+                  className="card-text">
+                    comments ({`${post.comments ? post.comments.length : 0 }`})
+                </Link>
+              </p>
+            </div>
+            <div className="col-2">
+              <Vote post={post} path="posts"/>
+            </div>
+          </div>
           <hr />
-          <i><p className="card-text">Author: {post.author}</p></i>
+          <p className="card-text author">Author: {post.author} | Date Posted: {date}</p>
           
-          <a href="/edit" className="btn btn-primary">Edit</a>
-          <button
-            onClick={this.onDeleteClicked.bind(this)}
-            className="btn btn-danger">
-              Delete
-          </button>
+          <div className="post-buttons float-md-right">
+            <button onClick={() => history.push('/edit')} className="btn btn-primary">Edit</button>
+            <button onClick={() => history.push('/delete')} className="btn btn-danger">Delete</button>
+          </div>
         </div>
       </div>
     )

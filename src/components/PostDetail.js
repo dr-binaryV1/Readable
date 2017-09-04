@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import uuid from 'uuid';
 
 import * as actions from '../actions';
@@ -26,26 +27,35 @@ class PostDetail extends Component {
   }
 
   render() {
-    const { posts, postId } = this.props;
+    const { posts, postId, history } = this.props;
 
     return (
       <div>{ posts ? posts.filter(p => {
         return p.id === postId }).map((post) => {
           return (
             <div key={post.id} className="text-left">
-              <div className="card text-left">
+              <div className="post-cards card text-left">
                 <div className="card-body">
                   <h4 className="card-title">{post.title}</h4>
-                  <p className="card-text">{post.body}</p>
-
-                  <Vote post={post} path="posts"/>
-                  <br />
-                  
+                  <div className="row">
+                    <div className="col-10">
+                      <p className="card-text">{post.body}</p>
+                    </div>
+                    <div className="col-2">
+                      <Vote post={post} path="posts"/>
+                    </div>
+                  </div>
                   <hr />
-                  <i><p className="card-text">Author: {post.author}</p></i>
-                  
-                  <a href="/edit" className="btn btn-primary">Edit</a>
-                  <a href="/delete" className="btn btn-danger">Delete</a>
+                  <p className="card-text author">Author: {post.author} | Date Posted: {new Date().toDateString(post.timestamp)}</p>
+                  <div className="post-buttons float-md-right">
+                    <button onClick={() => history.push('/edit')} className="btn btn-primary">Edit</button>
+                    <button 
+                      onClick={() => {
+                        this.props.deleteContent(post.id, 'posts');
+                        history.push('/'); 
+                      }} 
+                      className="btn btn-danger">Delete</button>
+                  </div>
                 </div>
               </div>
               <br />
@@ -95,4 +105,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, actions)(PostDetail);
+export default withRouter(connect(mapStateToProps, actions)(PostDetail));
