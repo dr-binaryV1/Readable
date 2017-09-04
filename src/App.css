@@ -49,3 +49,7 @@ button {
   bottom: 8%;
   right: 3%;
 }
+
+.edit-post-container {
+  display: none;
+}

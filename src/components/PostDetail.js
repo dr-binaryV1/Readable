@@ -23,7 +23,7 @@ class PostDetail extends Component {
       parentId: postId
     };
 
-    this.props.postComment(data);
+    this.props.postContent(data, 'comments');
   }
 
   render() {
