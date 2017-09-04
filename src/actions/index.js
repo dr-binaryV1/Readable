@@ -20,17 +20,20 @@ export const receiveCategories = data => ({
 });
 
 export const getPosts = () => dispatch => {
+  let allPost = [];
+
   fetch(`${apiURL}/posts`, headers)
     .then(response => response.json())
     .then((posts) => {
-      posts.map((post) => {
+      allPost = posts.map((post) => {
         return fetch(`${apiURL}/posts/${post.id}/comments`, headers)
-          .then((res) => res.json())
+          .then((res) => { return res.json()})
           .then(comments => {
             post.comments = comments;
+            return post;
           })
-          .then(() => dispatch(receivePosts(posts)))
       })
+      Promise.all(allPost).then(posts => dispatch(receivePosts(posts)));
     });
 };
 
@@ -40,9 +43,8 @@ export const getCategories = () => dispatch => {
     .then((data) => dispatch(receiveCategories(data)));
 };
 
-//TODO: Fix delay in update at first click
-export const postVote = (id, option) => dispatch => {
-  fetch(`${apiURL}/posts/${id}`, {
+export const postVote = (id, option, path) => dispatch => {
+  fetch(`${apiURL}/${path}/${id}`, {
     headers: {
       Authorization: 'gcvhbf84up5juhbde',
       'Content-Type': 'application/json'
