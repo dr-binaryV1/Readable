@@ -33,7 +33,12 @@ export const getPosts = () => dispatch => {
             return post;
           })
       })
-      Promise.all(allPost).then(posts => dispatch(receivePosts(posts)));
+      
+      Promise.all(allPost)
+        .then(posts => { 
+          dispatch(receivePosts(posts.filter(post => {
+            return post.deleted === false})))
+        });
     });
 };
 
@@ -55,8 +60,8 @@ export const postVote = (id, option, path) => dispatch => {
     .then(getPosts()(dispatch));
 }
 
-export const submitPost = (post) => dispatch => {
-  fetch(`${apiURL}/posts`, {
+export const postContent = (post, path) => dispatch => {
+  fetch(`${apiURL}/${path}`, {
     headers: {
       Authorization: 'gcvhbf84up5juhbde',
       'Content-Type': 'application/json'
@@ -67,24 +72,24 @@ export const submitPost = (post) => dispatch => {
     .then(getPosts()(dispatch));
 }
 
-export const postComment = (comment) => dispatch => {
-  fetch(`${apiURL}/comments`, {
-    headers: {
-      Authorization: 'gcvhbf84up5juhbde',
-      'Content-Type': 'application/json'
-    },
-    method: 'POST',
-    body: JSON.stringify(comment)
-  }).then((res) => res.json())
-    .then(getPosts()(dispatch));
-}
-
 export const deleteContent = (id, path) => dispatch => {
   fetch(`${apiURL}/${path}/${id}`, {
     headers: {
       Authorization: 'gcvhbf84up5juhbde'
     },
     method: 'DELETE'
+  }).then((res) => res.json())
+    .then(getPosts()(dispatch));
+}
+
+export const updateContent = (id, path, content) => dispatch => {
+  fetch(`${apiURL}/${path}/${id}`, {
+    headers: {
+      Authorization: 'gcvhbf84up5juhbde',
+      'Content-Type': 'application/json'
+    },
+    method: 'PUT',
+    body: JSON.stringify(content)
   }).then((res) => res.json())
     .then(getPosts()(dispatch));
 }
