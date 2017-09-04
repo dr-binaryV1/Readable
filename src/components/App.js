@@ -19,6 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <br />
         <div className="container">
           <div className="row">
             <div className="col-10">
@@ -27,7 +28,7 @@ class App extends Component {
                 const { category } = match.params;
                 return <PostsList category={category} />
               }} />
-              <Route exact path="/posts/:category/:id" render={({ match }) => {
+              <Route exact path="/:category/:id" render={({ match }) => {
                 const { id } = match.params;
                 return <PostDetail postId={id} />
               }} />

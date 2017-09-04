@@ -7,14 +7,14 @@ import FaArrowDown from 'react-icons/lib/fa/arrow-down';
 
 class Vote extends Component {
   onVote(option) {
-    this.props.postVote(this.props.post.id, { option });
+    this.props.postVote(this.props.post.id, { option }, this.props.path);
   }
 
   render() {
     const { post } = this.props;
 
     return (
-      <div className='card col-2 text-center float-md-right'>
+      <div className='card col-2 text-center float-md-right text-dark'>
         <div>
           <div className='clickables' onClick={() => this.onVote('upVote')}><FaArrowUp /></div>
         </div>

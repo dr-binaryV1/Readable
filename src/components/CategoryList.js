@@ -9,7 +9,7 @@ function CategoryList(props) {
   return (
     <div>
       <div>
-        <h3>Categories</h3>
+        <h5>Categories</h5>
         <hr />
         {categories ? categories.map((category) => 
           <Category key={category.name} category={category} />) : ''}

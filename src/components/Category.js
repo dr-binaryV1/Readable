@@ -12,7 +12,7 @@ function Category(props) {
   return (
     <div onClick={categoryClicked} className="card" id='card_id'>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item clickables">{formattedCategory}</li>
+        <li className="list-group-item clickables text-white bg-primary">{formattedCategory}</li>
       </ul>
     </div>
   );
