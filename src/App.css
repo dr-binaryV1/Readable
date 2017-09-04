@@ -22,11 +22,30 @@
   cursor: pointer;
 }
 
-a {
+button {
   margin-right: 5px;
+}
+
+.author {
+  position: absolute;
+  bottom: 2%;
+}
+
+.card-margin-bottom {
+  margin-bottom: 10px;
 }
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.post-cards {
+  min-height: 225px;
+}
+
+.post-buttons {
+  position: absolute;
+  bottom: 8%;
+  right: 3%;
 }
