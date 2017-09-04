@@ -18,7 +18,7 @@ class Post extends Component {
 
   render() {
     const { post } = this.props;
-    const date = new Date().toDateString(post.timestamp);
+    const date = new Date(post.timestamp).toDateString();
 
     return (
       <div>
@@ -28,8 +28,8 @@ class Post extends Component {
             <div className="row">
               <div className="col-10">
                 <p className="card-text">{post.body}</p>
-                  <Link 
-                    to={`/${post.category}/${post.id}`} 
+                  <Link
+                    to={`/${post.category}/${post.id}`}
                     className="card-text">
                       <MdComment size={30} /> Comments ({`${post.comments ? post.comments.length : 0 }`})
                   </Link>
@@ -41,8 +41,8 @@ class Post extends Component {
             <hr />
             <p className="card-text author"><MdAccountCircle size={25}/> {post.author} | <MdDateRange size={25} /> {date}</p>
             <div className="post-buttons float-md-right">
-              <button 
-                onClick={() => { document.getElementById(post.id).style.display = "block" }} 
+              <button
+                onClick={() => { document.getElementById(post.id).style.display = "block" }}
                 className="btn btn-primary"><MdCreate /> Edit</button>
               <button onClick={this.onDeleteClicked.bind(this)} className="btn btn-danger"><MdDelete /> Delete</button>
             </div>
