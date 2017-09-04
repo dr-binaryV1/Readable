@@ -6,7 +6,7 @@ import MdDelete from 'react-icons/lib/md/delete';
 import MdDateRange from 'react-icons/lib/md/date-range';
 
 import * as actions from '../actions';
-
+import EditComment from './EditComment';
 import Vote from './Vote';
 
 class Comment extends Component {
@@ -16,9 +16,10 @@ class Comment extends Component {
 
   render() {
     const { comment } = this.props;
-    const date = new Date().toDateString(comment.timestamp);
+    const date = new Date(comment.timestamp).toDateString();
 
     return (
+        <div>
       <div className="card">
         <div className="card-body text-white bg-primary">
           <div className="row">
@@ -33,9 +34,15 @@ class Comment extends Component {
         <div className="card-footer text-white bg-dark">
         <MdAccountCircle size={30}/> {comment.author} | <MdDateRange size={25} /> {date}
           <div className="float-md-right">
-            <button className="btn btn-primary"><MdCreate /> Edit</button>
+            <button
+                onClick={() => { document.getElementById(comment.id).style.display = "block" }}
+                className="btn btn-primary"><MdCreate /> Edit</button>
             <button onClick={this.onDeleteClicked.bind(this)} className="btn btn-danger"><MdDelete /> Delete</button>
           </div>
+        </div>
+      </div>
+        <div id={comment.id} className="edit-comment-container">
+            <EditComment comment={comment} />
         </div>
       </div>
     )
