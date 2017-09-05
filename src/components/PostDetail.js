@@ -7,7 +7,7 @@ import MdDateRange from 'react-icons/lib/md/date-range';
 import MdCreate from 'react-icons/lib/md/create';
 import MdDelete from 'react-icons/lib/md/delete';
 
-import * as actions from '../actions';
+import { postContent, deleteContent } from '../actions';
 import PageNotFound from './PageNotFound';
 import EditPost from './EditPost';
 import Comment from './Comment';
@@ -124,4 +124,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, actions)(PostDetail));
+export default withRouter(connect(mapStateToProps, { postContent, deleteContent })(PostDetail));

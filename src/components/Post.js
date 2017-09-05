@@ -6,7 +6,7 @@ import MdAccountCircle from 'react-icons/lib/md/account-circle';
 import MdDateRange from 'react-icons/lib/md/date-range';
 import MdCreate from 'react-icons/lib/md/create';
 import MdDelete from 'react-icons/lib/md/delete';
-import * as actions from '../actions';
+import { deleteContent } from '../actions';
 import EditPost from './EditPost';
 
 import Vote from './Vote';
@@ -56,4 +56,4 @@ class Post extends Component {
   }
 }
 
-export default connect(null, actions)(Post);
+export default connect(null, { deleteContent })(Post);

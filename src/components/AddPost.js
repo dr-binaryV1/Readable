@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import MdCreate from 'react-icons/lib/md/create';
 import uuid from 'uuid';
 
-import * as actions from '../actions';
+import { postContent } from '../actions';
 
 class AddPost extends Component {
   onSubmitPost() {
@@ -88,4 +88,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, actions)(AddPost));
+export default withRouter(connect(mapStateToProps, { postContent })(AddPost));

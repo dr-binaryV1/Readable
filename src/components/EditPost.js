@@ -1,5 +1,5 @@
 import React from 'react';
-import * as actions from '../actions';
+import { updateContent } from '../actions';
 import { connect } from 'react-redux';
 
 import MdCreate from 'react-icons/lib/md/create';
@@ -54,4 +54,4 @@ function EditPost(props) {
   )
 }
 
-export default connect(null, actions)(EditPost);
+export default connect(null, { updateContent })(EditPost);

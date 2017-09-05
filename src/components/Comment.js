@@ -5,7 +5,7 @@ import MdCreate from 'react-icons/lib/md/create';
 import MdDelete from 'react-icons/lib/md/delete';
 import MdDateRange from 'react-icons/lib/md/date-range';
 
-import * as actions from '../actions';
+import { deleteContent } from '../actions';
 import EditComment from './EditComment';
 import Vote from './Vote';
 
@@ -49,4 +49,4 @@ class Comment extends Component {
   }
 }
 
-export default connect(null, actions)(Comment);
+export default connect(null, { deleteContent })(Comment);

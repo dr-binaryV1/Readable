@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import { postVote } from '../actions';
 
 import FaArrowUp from 'react-icons/lib/fa/arrow-up';
 import FaArrowDown from 'react-icons/lib/fa/arrow-down';
@@ -30,4 +30,4 @@ class Vote extends Component {
 }
 
 
-export default connect(null, actions)(Vote);
+export default connect(null, { postVote })(Vote);

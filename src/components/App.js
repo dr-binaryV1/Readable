@@ -7,7 +7,7 @@ import CategoryList from './CategoryList';
 import PostDetail from './PostDetail';
 import Header from './Header';
 import AddPost from './AddPost';
-import * as actions from '../actions';
+import { getPosts, getCategories } from '../actions';
 import '../App.css';
 
 class App extends Component {
@@ -43,4 +43,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(connect(null, actions)(App));
+export default withRouter(connect(null, { getPosts, getCategories })(App));
