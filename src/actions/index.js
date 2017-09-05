@@ -8,6 +8,7 @@ const headers = {
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
+export const SORT_POSTS = 'SORT_POSTS';
 
 export const receivePosts = posts => ({
   type: RECEIVE_POSTS,
@@ -18,6 +19,12 @@ export const receiveCategories = data => ({
   type: RECEIVE_CATEGORIES,
   data
 });
+
+export const sortPosts = (posts, method) => ({
+  type: SORT_POSTS,
+  posts,
+  method
+})
 
 export const getPosts = () => dispatch => {
   let allPost = [];
@@ -33,9 +40,9 @@ export const getPosts = () => dispatch => {
             return post;
           })
       })
-      
+
       Promise.all(allPost)
-        .then(posts => { 
+        .then(posts => {
           dispatch(receivePosts(posts.filter(post => {
             return post.deleted === false})))
         });
