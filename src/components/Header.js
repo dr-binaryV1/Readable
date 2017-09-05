@@ -10,7 +10,7 @@ function Header() {
           <Link className="nav-link" to="/">Home<span className="sr-only">(current)</span></Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/add-post">Add Post</Link>
+          <Link className="nav-link" to="/posts/new/post">Add Post</Link>
         </li>
       </ul>
     </nav>
