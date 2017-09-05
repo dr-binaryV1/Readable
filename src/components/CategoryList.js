@@ -11,11 +11,11 @@ function CategoryList(props) {
       <div>
         <h5>Categories</h5>
         <hr />
-        {categories ? categories.map((category) => 
+        {categories ? categories.map((category) =>
           <Category key={category.name} category={category} />) : ''}
       </div>
     </div>
-  );  
+  );
 }
 
 function mapStateToProps(state) {

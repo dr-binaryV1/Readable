@@ -62,3 +62,7 @@ a:hover {
 .edit-post-container, .edit-comment-container {
   display: none;
 }
+
+.filter-control-container {
+  margin-bottom: 3px;
+}
