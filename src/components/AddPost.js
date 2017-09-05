@@ -7,7 +7,9 @@ import uuid from 'uuid';
 import { postContent } from '../actions';
 
 class AddPost extends Component {
-  onSubmitPost() {
+  onSubmitPost(e) {
+    e.preventDefault();
+
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const body = document.getElementById('body').value;
@@ -37,13 +39,14 @@ class AddPost extends Component {
         <div className="card bg-light mb-3">
           <div className="card-header">Add Post</div>
           <div className="card-body">
-            <form onSubmit={(e) => e.preventDefault()}>
-              <input 
+            <form onSubmit={(e) => this.onSubmitPost(e)}>
+              <input
                 className="form-control col-4"
                 name="title"
-                id="title" 
-                type="text" 
-                placeholder="Title" />
+                id="title"
+                type="text"
+                placeholder="Title"
+                required />
               <br />
 
               <input
@@ -51,12 +54,13 @@ class AddPost extends Component {
                 name="author"
                 id="author"
                 type="text"
-                placeholder="Author" />
+                placeholder="Author"
+                required />
               <br />
 
               <select className="form-control col-2" name="category" id="category">
-              { categories ? categories.map(category => { 
-                return <option key={category.name} value={category.name}>{category.name}</option> }) 
+              { categories ? categories.map(category => {
+                return <option key={category.name} value={category.name}>{category.name}</option> })
                 : ''}
               </select>
               <br />
@@ -66,11 +70,12 @@ class AddPost extends Component {
                 name="body"
                 id="body"
                 cols="3"
-                placeholder="Enter Post..." />
+                placeholder="Enter Post..."
+                required />
               <br />
 
               <button
-                onClick={this.onSubmitPost.bind(this)}
+                type="submit"
                 className="btn btn-primary float-md-left">
                 <MdCreate /> Submit Post
               </button>

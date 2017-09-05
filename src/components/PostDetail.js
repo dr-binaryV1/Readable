@@ -14,7 +14,9 @@ import Comment from './Comment';
 import Vote from './Vote';
 
 class PostDetail extends Component {
-  onSubmitComment() {
+  onSubmitComment(e) {
+    e.preventDefault();
+
     const { postId } = this.props;
     const body = document.getElementById('comment').value;
     const author = document.getElementById('author').value;
@@ -90,7 +92,7 @@ class PostDetail extends Component {
           <div className="card border-light mb-3 text-left">
             <div className="card-header">Add Comment</div>
             <div className="card-body">
-              <form onSubmit={(e) => e.preventDefault()}>
+              <form onSubmit={ (e) => this.onSubmitComment(e)}>
                 <input
                   name="author"
                   id="author"
@@ -104,10 +106,11 @@ class PostDetail extends Component {
                   id="comment"
                   className="form-control col-8"
                   rows="3"
-                  placeholder="Add comment here..." />
+                  placeholder="Add comment here..."
+                  required />
                 <br />
                 <button
-                  onClick={this.onSubmitComment.bind(this)}
+                  type="submit"
                   className="btn btn-primary"><MdCreate /> Post Comment</button>
               </form>
             </div>
