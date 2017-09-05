@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import sortBy from 'sort-by';
 
-import * as actions from '../actions';
+import { sortPosts } from '../actions';
 import Post from './Post';
 
 function PostsList(props) {
@@ -47,4 +47,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, actions)(PostsList);
+export default connect(mapStateToProps, { sortPosts })(PostsList);
