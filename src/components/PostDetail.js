@@ -8,6 +8,7 @@ import MdCreate from 'react-icons/lib/md/create';
 import MdDelete from 'react-icons/lib/md/delete';
 
 import * as actions from '../actions';
+import PageNotFound from './PageNotFound';
 import EditPost from './EditPost';
 import Comment from './Comment';
 import Vote from './Vote';
@@ -33,10 +34,10 @@ class PostDetail extends Component {
 
   render() {
     const { posts, postId, history } = this.props;
+    const selectedPost = posts ? posts.filter(p => { return p.id === postId }) : '';
 
     return (
-      <div>{ posts ? posts.filter(p => {
-        return p.id === postId }).map((post) => {
+      <div>{ selectedPost.length > 0 ? selectedPost.map((post) => {
           return (
             <div key={post.id} className="text-left">
               <div className="post-cards card text-left">
@@ -83,33 +84,35 @@ class PostDetail extends Component {
             </div>
           )
         })
-        : ''}
+        : <PageNotFound />}
 
-        <div className="card border-light mb-3 text-left">
-          <div className="card-header">Add Comment</div>
-          <div className="card-body">
-            <form onSubmit={(e) => e.preventDefault()}>
-              <input
-                name="author"
-                id="author"
-                className="form-control col-4"
-                type="text"
-                placeholder="Enter author name"
-                required />
-              <br />
-              <textarea
-                name="comment"
-                id="comment"
-                className="form-control col-8"
-                rows="3"
-                placeholder="Add comment here..." />
-              <br />
-              <button
-                onClick={this.onSubmitComment.bind(this)}
-                className="btn btn-primary"><MdCreate /> Post Comment</button>
-            </form>
-          </div>
-        </div>
+        { selectedPost.length > 0 ?
+          <div className="card border-light mb-3 text-left">
+            <div className="card-header">Add Comment</div>
+            <div className="card-body">
+              <form onSubmit={(e) => e.preventDefault()}>
+                <input
+                  name="author"
+                  id="author"
+                  className="form-control col-4"
+                  type="text"
+                  placeholder="Enter author name"
+                  required />
+                <br />
+                <textarea
+                  name="comment"
+                  id="comment"
+                  className="form-control col-8"
+                  rows="3"
+                  placeholder="Add comment here..." />
+                <br />
+                <button
+                  onClick={this.onSubmitComment.bind(this)}
+                  className="btn btn-primary"><MdCreate /> Post Comment</button>
+              </form>
+            </div>
+          </div> : ''
+        }
       </div>
     )
   }
