@@ -24,15 +24,15 @@ class Post extends Component {
       <div>
         <div className="post-cards card text-left text-white bg-dark card-margin-bottom">
           <div className="card-body">
-            <h4 className="card-title">{post.title}</h4>
+            <Link
+              to={`/${post.category}/${post.id}`}
+              className="card-text">
+              <h4 className="card-title">{post.title}</h4>
+            </Link>
             <div className="row">
               <div className="col-10">
                 <p className="card-text">{post.body}</p>
-                  <Link
-                    to={`/${post.category}/${post.id}`}
-                    className="card-text">
-                      <MdComment size={30} /> Comments ({`${post.comments ? post.comments.length : 0 }`})
-                  </Link>
+                <p><MdComment size={30} /> Comments ({`${post.comments ? post.comments.length : 0 }`})</p>
               </div>
               <div className="col-2">
                 <Vote post={post} path="posts"/>
