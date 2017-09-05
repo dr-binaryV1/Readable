@@ -75,7 +75,7 @@ class PostDetail extends Component {
                 <EditPost post={ post } />
               </div>
               <br />
-              <h4>Comments</h4>
+              <h5>Comments ({ post.comments ? post.comments.length: 0})</h5>
               {post.comments ? post.comments.map(comment => {
                 return <Comment key={comment.id} comment={comment}/>
               })
