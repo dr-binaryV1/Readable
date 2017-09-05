@@ -19,7 +19,7 @@ function PostsList(props) {
   return (
     <div>
       <div className="filter-control-container">
-        <label className="float-md-left">Filter By: </label><select
+        <select
           onChange={() => onFilterChange()}
           defaultValue="none"
           id="filter-post"
@@ -32,9 +32,9 @@ function PostsList(props) {
       {posts && category ? posts.filter(post =>
         {return post.category === category}).map((post) =>
           post.deleted !== true ? <Post key={post.id} post={post} /> : '')
-          : posts ? posts.map((post) =>
+            : posts ? posts.map((post) =>
               post.deleted !== true ? <Post key={post.id} post={post} /> : '')
-                : <h4>There are no Post for { category } at this time.</h4>}
+                : <h4>There are no Post for '{ category }' at this time.</h4>}
     </div>
   )
 }

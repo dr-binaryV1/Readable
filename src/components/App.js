@@ -14,8 +14,8 @@ class App extends Component {
   componentDidMount() {
     this.props.getPosts();
     this.props.getCategories();
-  } 
-  
+  }
+
   render() {
     return (
       <div className="App">
@@ -33,7 +33,7 @@ class App extends Component {
                 const { id } = match.params;
                 return <PostDetail postId={id} />
               }} />
-              <Route exact path="/add-post" component={AddPost} />
+              <Route exact path="/posts/new/post" component={AddPost} />
             </div>
             <div className="col-2"><CategoryList /></div>
           </div>
