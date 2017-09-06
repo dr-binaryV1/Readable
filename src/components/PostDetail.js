@@ -55,9 +55,10 @@ class PostDetail extends Component {
                   </div>
                   <hr />
                   <p className="card-text author">
-                    <MdAccountCircle size={30}/>
+                    <MdAccountCircle size={30}/> 
                     {post.author} | <MdDateRange size={25} />
-                    {new Date(post.timestamp).toDateString()}
+                    {`${new Date(post.timestamp).toDateString()}
+                    ${new Date(post.timestamp).toLocaleTimeString()}`}
                   </p>
                   <div className="post-buttons float-md-right">
                     <button

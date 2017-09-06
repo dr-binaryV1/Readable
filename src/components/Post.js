@@ -19,6 +19,7 @@ class Post extends Component {
   render() {
     const { post } = this.props;
     const date = new Date(post.timestamp).toDateString();
+    const time = new Date(post.timestamp).toLocaleTimeString();
 
     return (
       <div>
@@ -39,7 +40,7 @@ class Post extends Component {
               </div>
             </div>
             <hr />
-            <p className="card-text author"><MdAccountCircle size={25}/> {post.author} | <MdDateRange size={25} /> {date}</p>
+            <p className="card-text author"><MdAccountCircle size={25}/> {post.author} | <MdDateRange size={25} /> {`${date} ${time}`}</p>
             <div className="post-buttons float-md-right">
               <button
                 onClick={() => { document.getElementById(post.id).style.display = "block" }}

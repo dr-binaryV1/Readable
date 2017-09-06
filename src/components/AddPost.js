@@ -37,7 +37,7 @@ class AddPost extends Component {
     return (
       <div>
         <div className="card bg-light mb-3">
-          <div className="card-header">Add Post</div>
+          <div className="card-header bg-primary text-white">Add Post</div>
           <div className="card-body">
             <form onSubmit={(e) => this.onSubmitPost(e)}>
               <input
@@ -60,7 +60,8 @@ class AddPost extends Component {
 
               <select className="form-control col-2" name="category" id="category">
               { categories ? categories.map(category => {
-                return <option key={category.name} value={category.name}>{category.name}</option> })
+                const formattedCategory = category.name.charAt(0).toUpperCase() + category.name.slice(1);
+                return <option key={formattedCategory} value={category.name}>{formattedCategory}</option> })
                 : ''}
               </select>
               <br />
