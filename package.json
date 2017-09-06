@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "express": "^4.15.4",
     "react": "^16.0.0-alpha.12",
     "react-dom": "^16.0.0-alpha.12",
     "react-icons": "^2.2.5",
@@ -17,7 +18,8 @@
     "uuid": "^3.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start~": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
