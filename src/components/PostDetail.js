@@ -55,7 +55,7 @@ class PostDetail extends Component {
                   </div>
                   <hr />
                   <p className="card-text author">
-                    <MdAccountCircle size={30}/> 
+                    <MdAccountCircle size={30}/>
                     {post.author} | <MdDateRange size={25} />
                     {`${new Date(post.timestamp).toDateString()}
                     ${new Date(post.timestamp).toLocaleTimeString()}`}
@@ -128,4 +128,7 @@ function mapStateToProps(state) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, { postContent, deleteContent })(PostDetail));
+export default withRouter(connect(mapStateToProps, {
+  postContent,
+  deleteContent
+})(PostDetail));
