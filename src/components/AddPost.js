@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
-import MdCreate from 'react-icons/lib/md/create';
+import { withRouter } from 'react-router-dom';
 import MdSend from 'react-icons/lib/md/send';
 import uuid from 'uuid';
 
