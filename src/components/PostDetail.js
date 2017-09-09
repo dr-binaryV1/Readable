@@ -6,6 +6,7 @@ import MdAccountCircle from 'react-icons/lib/md/account-circle';
 import MdDateRange from 'react-icons/lib/md/date-range';
 import MdCreate from 'react-icons/lib/md/create';
 import MdDelete from 'react-icons/lib/md/delete';
+import MdSend from 'react-icons/lib/md/send';
 
 import { postContent, deleteContent } from '../actions';
 import PageNotFound from './PageNotFound';
@@ -112,7 +113,7 @@ class PostDetail extends Component {
                 <br />
                 <button
                   type="submit"
-                  className="btn btn-primary"><MdCreate /> Post Comment</button>
+                  className="btn btn-primary">Post Comment <MdSend size={25}/></button>
               </form>
             </div>
           </div> : ''

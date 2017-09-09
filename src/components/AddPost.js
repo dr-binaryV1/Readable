@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
-import MdCreate from 'react-icons/lib/md/create';
+import { withRouter } from 'react-router-dom';
+import MdSend from 'react-icons/lib/md/send';
 import uuid from 'uuid';
 
 import { postContent } from '../actions';
@@ -78,7 +78,7 @@ class AddPost extends Component {
               <button
                 type="submit"
                 className="btn btn-primary float-md-left">
-                <MdCreate /> Submit Post
+                Submit Post <MdSend size={25} />
               </button>
             </form>
           </div>
