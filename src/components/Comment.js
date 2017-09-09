@@ -20,20 +20,20 @@ class Comment extends Component {
     const time = new Date(comment.timestamp).toLocaleTimeString();
 
     return (
-        <div>
-      <div className="card box">
-        <div className="card-body text-white bg-primary">
-          <div className="row">
-            <div className="col-10">
-              <p className="card-text">{comment.body}</p>
-            </div>
-            <div className="col-2">
-              <Vote post={comment} path="comments" />
+      <div>
+        <div className="card box">
+          <div className="card-body text-white bg-primary">
+            <div className="row">
+              <div className="col-10">
+                <p className="card-text">{comment.body}</p>
+              </div>
+              <div className="col-2">
+                <Vote post={comment} path="comments" />
+              </div>
             </div>
           </div>
-        </div>
         <div className="card-footer text-white bg-dark">
-        <MdAccountCircle size={30}/> {comment.author} | <MdDateRange size={25} /> {`${date} ${time}`}
+          <MdAccountCircle size={30}/> {comment.author} | <MdDateRange size={25} /> {`${date} ${time}`}
           <div className="float-md-right">
             <button
                 onClick={() => { document.getElementById(comment.id).style.display = "block" }}
