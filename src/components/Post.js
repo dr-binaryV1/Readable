@@ -23,7 +23,7 @@ class Post extends Component {
 
     return (
       <div>
-        <div className="post-cards card text-left text-white bg-dark card-margin-bottom">
+        <div className="post-cards card text-left text-white bg-dark card-margin-bottom box">
           <div className="card-body">
             <Link
               to={`/${post.category}/${post.id}`}

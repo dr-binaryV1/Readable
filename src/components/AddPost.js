@@ -37,7 +37,7 @@ class AddPost extends Component {
     return (
       <div>
         <div className="card bg-light mb-3">
-          <div className="card-header bg-primary text-white">Add Post</div>
+          <div className="card-header bg-dark text-white">Add Post</div>
           <div className="card-body">
             <form onSubmit={(e) => this.onSubmitPost(e)}>
               <input
