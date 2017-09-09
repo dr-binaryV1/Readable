@@ -21,7 +21,7 @@ class Comment extends Component {
 
     return (
         <div>
-      <div className="card">
+      <div className="card box">
         <div className="card-body text-white bg-primary">
           <div className="row">
             <div className="col-10">
